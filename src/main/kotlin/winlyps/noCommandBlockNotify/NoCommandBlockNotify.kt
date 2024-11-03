@@ -14,6 +14,9 @@ class NoCommandBlockNotify : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoCommandBlockNotify plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("commandBlockOutput", "true")
+            logger.info("NoCommandBlockNotify plugin has been disabled.")
+        }
     }
 }
